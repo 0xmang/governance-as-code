@@ -1,7 +1,7 @@
 aws_region         = "us-east-1"
 project_name       = "gac-lab"
 environment        = "dev"
-owner              = "nasab-ghazal"
+owner              = "john-smith"
 config_bucket_name = "replace-with-unique-config-bucket-name"
 trail_bucket_name  = "replace-with-unique-cloudtrail-bucket-name"
 enable_security_hub = true
