@@ -251,11 +251,9 @@ More variants are included in:
 ## Related docs
 
 - [`docs/architecture.md`](docs/architecture.md)
-- [`docs/demo-script.md`](docs/demo-script.md)
 - [`docs/implementation-notes.md`](docs/implementation-notes.md)
 - [`docs/iso27001-mapping.md`](docs/iso27001-mapping.md)
 - [`docs/site-summary.md`](docs/site-summary.md)
-- [`docs/resume-bullets.md`](docs/resume-bullets.md)
 
 ---
 
