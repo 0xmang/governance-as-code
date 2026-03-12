@@ -27,8 +27,6 @@ Using **Terraform**, **AWS native governance services**, and **Azure Policy / mo
 - generate compliance-oriented evidence
 - explain technical controls in the language of **risk, auditability, and ISO 27001**
 
-It is designed to work as a **GitHub portfolio project**, **interview walkthrough**, **personal website case study**, or **Governance / GRC / cloud security demo**.
-
 ---
 
 ## What this project demonstrates
@@ -41,15 +39,6 @@ It is designed to work as a **GitHub portfolio project**, **interview walkthroug
 - **Policy-as-Code thinking** through native cloud policy controls
 - **ISO/IEC 27001:2022 mapping** from implemented controls to governance themes
 - **Evidence-friendly design** suitable for demos, audits, and architecture discussions
-
-### Skills highlighted
-
-- AWS security and governance services
-- Azure governance and compliance controls
-- Terraform structure and modular design
-- cloud logging and configuration monitoring
-- control mapping and compliance storytelling
-- platform governance architecture
 
 ---
 
@@ -90,7 +79,7 @@ flowchart TB
 
 ### Architecture story
 
-This repo follows a simple but credible governance model:
+Simple and Credible governance model:
 
 1. **Terraform** acts as the control delivery engine.
 2. **AWS and Azure native services** provide monitoring, policy evaluation, and logging.
@@ -102,7 +91,7 @@ This repo follows a simple but credible governance model:
 ## Project structure
 
 ```text
-multicloud-governance-as-code/
+governance-as-code/
 ├─ README.md
 ├─ docs/
 │  ├─ architecture.md
@@ -154,7 +143,7 @@ The AWS side of the lab demonstrates how to establish a lightweight governance b
 
 ### Governance value
 
-This gives you a practical way to explain how AWS can support:
+This gives a practical way to explain how AWS can support:
 
 - change visibility
 - continuous configuration monitoring
@@ -177,7 +166,7 @@ The Azure side of the lab demonstrates how to operationalize governance controls
 
 ### Governance value
 
-This gives you a practical way to explain how Azure can support:
+This gives a practical way to explain how Azure can support:
 
 - policy enforcement at scope
 - continuous compliance evaluation
@@ -202,35 +191,6 @@ The included mapping shows how these technical controls support themes such as:
 See:
 
 - [`docs/iso27001-mapping.md`](docs/iso27001-mapping.md)
-
----
-
-## How to use this repo
-
-### Option 1: Portfolio walkthrough
-Use this repo to explain:
-
-- your multi-cloud security mindset
-- how you translate policy into code
-- how Terraform supports governance repeatability
-- how technical controls can be framed for auditors, leadership, or clients
-
-### Option 2: Hands-on lab
-Deploy the AWS and Azure baselines in sandbox environments and capture:
-
-- Terraform plans and applies
-- policy compliance screenshots
-- Config / Security Hub / CloudTrail evidence
-- Azure Policy and Log Analytics screenshots
-
-### Option 3: Interview discussion artifact
-Walk through:
-
-- architecture decisions
-- control choices
-- limitations and trade-offs
-- ISO 27001 mapping logic
-- what you would do next in production
 
 ---
 
@@ -288,42 +248,6 @@ More variants are included in:
 
 ---
 
-## What makes this project strong for a portfolio
-
-This repo is intentionally shaped to be easy to present.
-
-It combines:
-
-- **technical delivery** through Terraform
-- **platform fluency** across AWS and Azure
-- **governance framing** through ISO 27001 mapping
-- **communication strength** through demo notes and résumé-ready summaries
-
-That combination is useful for roles in:
-
-- cloud security
-- governance, risk, and compliance
-- security architecture
-- consulting
-- DevSecOps / platform security
-
----
-
-## Limitations and next steps
-
-This project is a strong demo baseline, not a full enterprise landing zone.
-
-Good next extensions would be:
-
-- CI/CD policy validation gates
-- Sentinel or Open Policy Agent examples
-- identity governance controls
-- centralized evidence packaging
-- additional AWS Config / Azure Policy coverage
-- management group / multi-account expansion
-
----
-
 ## Related docs
 
 - [`docs/architecture.md`](docs/architecture.md)
@@ -337,4 +261,4 @@ Good next extensions would be:
 
 ## License / usage note
 
-This repository is intended as a personal learning, portfolio, and demonstration project. Review naming, scope, and policy impact before deploying to production cloud environments.
+This repository is intended as a **personal learning, portfolio, and demonstration project**. Review naming, scope, and policy impact before deploying to production cloud environments.
