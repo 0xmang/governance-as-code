@@ -77,8 +77,3 @@ This architecture shows a practical model:
 - infrastructure deployment becomes repeatable code
 - control checking becomes platform-native evidence
 - governance language becomes traceable to technical outcomes
-
-## Suggested explanation in an interview
-
-> I designed this lab to show that governance can be implemented as code rather than only described in policies. Terraform acts as the delivery mechanism, while AWS Config, Security Hub, CloudTrail, and Azure Policy provide the monitoring and enforcement layers. The final step is mapping those technical capabilities to a governance framework such as ISO 27001.
-

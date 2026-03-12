@@ -20,21 +20,3 @@ It does **not** mean this environment is certified or fully compliant.
 | Azure Log Analytics Workspace | Operational visibility | Logging and monitoring | Stores diagnostic and operational signals. |
 | Resource tagging | Ownership and asset structure | Asset management | Helps identify ownership, environment, and governance context. |
 | Naming conventions | Standardization | Operational control and consistency | Improves manageability, traceability, and reviewability. |
-
-## How to talk about this mapping
-
-A strong way to explain the mapping is:
-
-> ISO 27001 tells us what kinds of controls and management outcomes matter, while Terraform, AWS Config, CloudTrail, Security Hub, and Azure Policy give us practical ways to operationalize those goals in the cloud.
-
-## Suggested extensions for stronger alignment
-
-If you want to strengthen the governance story later, add:
-
-- key management controls using AWS KMS and Azure Key Vault
-- secret management controls using Secrets Manager or Key Vault secrets
-- CI/CD policy gates using Sentinel, OPA, or Checkov
-- backup controls and recovery testing evidence
-- role-based access controls and least privilege examples
-- evidence export and retention policies
-
