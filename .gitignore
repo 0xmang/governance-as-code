@@ -20,6 +20,4 @@ Thumbs.db
 # Evidence exports
 evidence-*/
 
-notes.md*
-demo-script.md*
-resume-bullets.md*
+dont-upload/

@@ -1,0 +1,1263 @@
+
+> terraform apply
+module.aws_baseline.aws_s3_bucket.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_iam_role.config: Refreshing state... [id=governance-as-code-dev-config-role]
+module.aws_baseline.aws_s3_bucket.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.data.aws_region.current: Reading...
+module.aws_baseline.data.aws_caller_identity.current: Reading...
+module.aws_baseline.data.aws_region.current: Read complete after 0s [id=us-east-1]
+module.aws_baseline.data.aws_caller_identity.current: Read complete after 0s [id=xxxxxxxx]
+module.aws_baseline.aws_iam_role_policy_attachment.config: Refreshing state... [id=governance-as-code-dev-config-role-20260313165140304400000001]
+module.aws_baseline.aws_s3_bucket_policy.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_public_access_block.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_versioning.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_cloudtrail.main: Refreshing state... [id=arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail]
+module.aws_baseline.aws_s3_bucket_policy.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_public_access_block.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_versioning.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # module.aws_baseline.aws_config_config_rule.cloud_trail_enabled will be created
+  + resource "aws_config_config_rule" "cloud_trail_enabled" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + name     = "governance-as-code-dev-cloudtrail-enabled"
+      + rule_id  = (known after apply)
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Owner"       = "xxxxx-xxxxxxxxx"
+          + "Project"     = "governance-as-code"
+          + "Purpose"     = "GovernanceAsCode"
+        }
+
+      + evaluation_mode (known after apply)
+
+      + source {
+          + owner             = "AWS"
+          + source_identifier = "CLOUD_TRAIL_ENABLED"
+        }
+    }
+
+  # module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited will be created
+  + resource "aws_config_config_rule" "s3_bucket_public_read_prohibited" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + name     = "governance-as-code-dev-s3-bucket-public-read-prohibited"
+      + rule_id  = (known after apply)
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Owner"       = "xxxxx-xxxxxxxxx"
+          + "Project"     = "governance-as-code"
+          + "Purpose"     = "GovernanceAsCode"
+        }
+
+      + evaluation_mode (known after apply)
+
+      + source {
+          + owner             = "AWS"
+          + source_identifier = "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+        }
+    }
+
+  # module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited will be created
+  + resource "aws_config_config_rule" "s3_bucket_public_write_prohibited" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + name     = "governance-as-code-dev-s3-bucket-public-write-prohibited"
+      + rule_id  = (known after apply)
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Owner"       = "xxxxx-xxxxxxxxx"
+          + "Project"     = "governance-as-code"
+          + "Purpose"     = "GovernanceAsCode"
+        }
+
+      + evaluation_mode (known after apply)
+
+      + source {
+          + owner             = "AWS"
+          + source_identifier = "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+        }
+    }
+
+  # module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled will be created
+  + resource "aws_config_config_rule" "s3_bucket_server_side_encryption_enabled" {
+      + arn      = (known after apply)
+      + id       = (known after apply)
+      + name     = "governance-as-code-dev-s3-bucket-server-side-encryption-enabled"
+      + rule_id  = (known after apply)
+      + tags_all = {
+          + "Environment" = "dev"
+          + "ManagedBy"   = "Terraform"
+          + "Owner"       = "xxxxx-xxxxxxxxx"
+          + "Project"     = "governance-as-code"
+          + "Purpose"     = "GovernanceAsCode"
+        }
+
+      + evaluation_mode (known after apply)
+
+      + source {
+          + owner             = "AWS"
+          + source_identifier = "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED"
+        }
+    }
+
+  # module.aws_baseline.aws_config_configuration_recorder.main will be created
+  + resource "aws_config_configuration_recorder" "main" {
+      + id       = (known after apply)
+      + name     = "governance-as-code-dev-recorder"
+      + role_arn = "arn:aws:iam::xxxxxxxx:role/governance-as-code-dev-config-role"
+
+      + recording_group {
+          + all_supported                 = true
+          + include_global_resource_types = true
+
+          + exclusion_by_resource_types (known after apply)
+
+          + recording_strategy (known after apply)
+        }
+
+      + recording_mode (known after apply)
+    }
+
+  # module.aws_baseline.aws_config_configuration_recorder_status.main will be created
+  + resource "aws_config_configuration_recorder_status" "main" {
+      + id         = (known after apply)
+      + is_enabled = true
+      + name       = "governance-as-code-dev-recorder"
+    }
+
+  # module.aws_baseline.aws_config_delivery_channel.main will be created
+  + resource "aws_config_delivery_channel" "main" {
+      + id             = (known after apply)
+      + name           = "governance-as-code-dev-delivery-channel"
+      + s3_bucket_name = "governance-as-code-config-bucket-1772663013"
+    }
+
+Plan: 7 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+module.aws_baseline.aws_config_configuration_recorder.main: Creating...
+module.aws_baseline.aws_config_configuration_recorder.main: Creation complete after 0s [id=governance-as-code-dev-recorder]
+module.aws_baseline.aws_config_delivery_channel.main: Creating...
+module.aws_baseline.aws_config_delivery_channel.main: Creation complete after 1s [id=governance-as-code-dev-delivery-channel]
+module.aws_baseline.aws_config_configuration_recorder_status.main: Creating...
+module.aws_baseline.aws_config_configuration_recorder_status.main: Creation complete after 2s [id=governance-as-code-dev-recorder]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Creating...
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Creating...
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Creating...
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Creating...
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Creation complete after 0s [id=governance-as-code-dev-s3-bucket-public-read-prohibited]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Creation complete after 0s [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Creation complete after 0s [id=governance-as-code-dev-cloudtrail-enabled]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Creation complete after 0s [id=governance-as-code-dev-s3-bucket-public-write-prohibited]
+
+Apply complete! Resources: 7 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+cloudtrail_name = "governance-as-code-dev-trail"
+config_bucket_name = "governance-as-code-config-bucket-1772663013"
+config_recorder_name = "governance-as-code-dev-recorder"
+security_hub_enabled = false
+trail_bucket_name = "governance-as-code-trail-bucket-1772663013"
+> 
+> 
+> terraform output
+cloudtrail_name = "governance-as-code-dev-trail"
+config_bucket_name = "governance-as-code-config-bucket-1772663013"
+config_recorder_name = "governance-as-code-dev-recorder"
+security_hub_enabled = false
+trail_bucket_name = "governance-as-code-trail-bucket-1772663013"
+> terraform output -json
+{
+  "cloudtrail_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "governance-as-code-dev-trail"
+  },
+  "config_bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "governance-as-code-config-bucket-1772663013"
+  },
+  "config_recorder_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "governance-as-code-dev-recorder"
+  },
+  "security_hub_enabled": {
+    "sensitive": false,
+    "type": "bool",
+    "value": false
+  },
+  "trail_bucket_name": {
+    "sensitive": false,
+    "type": "string",
+    "value": "governance-as-code-trail-bucket-1772663013"
+  }
+}
+> 
+> ../../scripts/aws-validate.sh
+=== AWS caller identity ===
+{
+    "UserId": "iiiiiiiiiiiiiiiiiiiiiiii",
+    "Account": "xxxxxxxx",
+    "Arn": "arn:aws:iam::xxxxxxxx:user/xxxxx"
+}
+
+=== AWS Config recorders ===
+{
+    "ConfigurationRecorders": [
+        {
+            "arn": "arn:aws:config:us-east-1:xxxxxxxx:configuration-recorder/governance-as-code-dev-recorder/esgpm6vt8fudvq4q",
+            "name": "governance-as-code-dev-recorder",
+            "roleARN": "arn:aws:iam::xxxxxxxx:role/governance-as-code-dev-config-role",
+            "recordingGroup": {
+                "allSupported": true,
+                "includeGlobalResourceTypes": true,
+                "resourceTypes": [],
+                "exclusionByResourceTypes": {
+                    "resourceTypes": []
+                },
+                "recordingStrategy": {
+                    "useOnly": "ALL_SUPPORTED_RESOURCE_TYPES"
+                }
+            },
+            "recordingMode": {
+                "recordingFrequency": "CONTINUOUS",
+                "recordingModeOverrides": []
+            },
+            "recordingScope": "PAID"
+        }
+    ]
+}
+
+=== AWS Config delivery channels ===
+{
+    "DeliveryChannels": [
+        {
+            "name": "governance-as-code-dev-delivery-channel",
+            "s3BucketName": "governance-as-code-config-bucket-1772663013"
+        }
+    ]
+}
+
+=== AWS Config rules ===
+{
+    "ConfigRules": [
+        {
+            "ConfigRuleName": "governance-as-code-dev-cloudtrail-enabled",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-fylz41",
+            "ConfigRuleId": "config-rule-fylz41",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "CLOUD_TRAIL_ENABLED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-public-read-prohibited",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-co1knu",
+            "ConfigRuleId": "config-rule-co1knu",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-public-write-prohibited",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-v6ojne",
+            "ConfigRuleId": "config-rule-v6ojne",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+
+=== CloudTrail trails ===
+{
+    "trailList": [
+        {
+            "Name": "governance-as-code-dev-trail",
+            "S3BucketName": "governance-as-code-trail-bucket-1772663013",
+            "IncludeGlobalServiceEvents": true,
+            "IsMultiRegionTrail": true,
+            "HomeRegion": "us-east-1",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail",
+            "LogFileValidationEnabled": true,
+            "HasCustomEventSelectors": false,
+            "HasInsightSelectors": false,
+            "IsOrganizationTrail": false
+        }
+    ]
+}
+
+=== Security Hub status ===
+
+aws: [ERROR]: An error occurred (InvalidAccessException) when calling the DescribeHub operation: Account xxxxxxxx is not subscribed to AWS Security Hub
+Security Hub may not be enabled or supported in this region.
+
+=== S3 bucket public access blocks ===
+Enter config bucket name: governance-as-code-config-bucket-1772663013
+Enter trail bucket name: governance-as-code-trail-bucket-1772663013
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+> 
+> 
+> aws configservice describe-configuration-recorders
+{
+    "ConfigurationRecorders": [
+        {
+            "arn": "arn:aws:config:us-east-1:xxxxxxxx:configuration-recorder/governance-as-code-dev-recorder/esgpm6vt8fudvq4q",
+            "name": "governance-as-code-dev-recorder",
+            "roleARN": "arn:aws:iam::xxxxxxxx:role/governance-as-code-dev-config-role",
+            "recordingGroup": {
+                "allSupported": true,
+                "includeGlobalResourceTypes": true,
+                "resourceTypes": [],
+                "exclusionByResourceTypes": {
+                    "resourceTypes": []
+                },
+                "recordingStrategy": {
+                    "useOnly": "ALL_SUPPORTED_RESOURCE_TYPES"
+                }
+            },
+            "recordingMode": {
+                "recordingFrequency": "CONTINUOUS",
+                "recordingModeOverrides": []
+            },
+            "recordingScope": "PAID"
+        }
+    ]
+}
+> aws configservice describe-delivery-channels
+{
+    "DeliveryChannels": [
+        {
+            "name": "governance-as-code-dev-delivery-channel",
+            "s3BucketName": "governance-as-code-config-bucket-1772663013"
+        }
+    ]
+}
+> aws configservice describe-config-rules
+{
+    "ConfigRules": [
+        {
+            "ConfigRuleName": "governance-as-code-dev-cloudtrail-enabled",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-fylz41",
+            "ConfigRuleId": "config-rule-fylz41",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "CLOUD_TRAIL_ENABLED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-public-read-prohibited",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-co1knu",
+            "ConfigRuleId": "config-rule-co1knu",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-public-write-prohibited",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-v6ojne",
+            "ConfigRuleId": "config-rule-v6ojne",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+> 
+> 
+> 
+> 
+> aws configservice describe-config-rules
+{
+    "ConfigRules": [
+        {
+            "ConfigRuleName": "governance-as-code-dev-cloudtrail-enabled",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-fylz41",
+            "ConfigRuleId": "config-rule-fylz41",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "CLOUD_TRAIL_ENABLED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-public-read-prohibited",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-co1knu",
+            "ConfigRuleId": "config-rule-co1knu",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_PUBLIC_READ_PROHIBITED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-public-write-prohibited",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-v6ojne",
+            "ConfigRuleId": "config-rule-v6ojne",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_PUBLIC_WRITE_PROHIBITED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        },
+        {
+            "ConfigRuleName": "governance-as-code-dev-s3-bucket-server-side-encryption-enabled",
+            "ConfigRuleArn": "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-yls82d",
+            "ConfigRuleId": "config-rule-yls82d",
+            "Source": {
+                "Owner": "AWS",
+                "SourceIdentifier": "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED"
+            },
+            "ConfigRuleState": "ACTIVE",
+            "EvaluationModes": [
+                {
+                    "Mode": "DETECTIVE"
+                }
+            ]
+        }
+    ]
+}
+> aws cloudtrail describe-trails --include-shadow-trails
+{
+    "trailList": [
+        {
+            "Name": "governance-as-code-dev-trail",
+            "S3BucketName": "governance-as-code-trail-bucket-1772663013",
+            "IncludeGlobalServiceEvents": true,
+            "IsMultiRegionTrail": true,
+            "HomeRegion": "us-east-1",
+            "TrailARN": "arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail",
+            "LogFileValidationEnabled": true,
+            "HasCustomEventSelectors": false,
+            "HasInsightSelectors": false,
+            "IsOrganizationTrail": false
+        }
+    ]
+}
+> aws s3api get-public-access-block --bucket governance-as-code-config-bucket-1772663013
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+> aws s3api get-public-access-block --bucket governance-as-code-trail-bucket-1772663013
+{
+    "PublicAccessBlockConfiguration": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+    }
+}
+> aws s3api get-bucket-encryption --bucket governance-as-code-config-bucket-1772663013
+{
+    "ServerSideEncryptionConfiguration": {
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                },
+                "BucketKeyEnabled": false
+            }
+        ]
+    }
+}
+> 
+> aws s3api get-bucket-encryption --bucket governance-as-code-trail-bucket-1772663013
+{
+    "ServerSideEncryptionConfiguration": {
+        "Rules": [
+            {
+                "ApplyServerSideEncryptionByDefault": {
+                    "SSEAlgorithm": "AES256"
+                },
+                "BucketKeyEnabled": false
+            }
+        ]
+    }
+}
+> aws s3api get-bucket-versioning --bucket governance-as-code-trail-bucket-1772663013
+{
+    "Status": "Enabled"
+}
+> aws s3api get-bucket-versioning --bucket governance-as-code-config-bucket-1772663013
+{
+    "Status": "Enabled"
+}
+> 
+> terraform destroy
+module.aws_baseline.data.aws_region.current: Reading...
+module.aws_baseline.data.aws_caller_identity.current: Reading...
+module.aws_baseline.aws_iam_role.config: Refreshing state... [id=governance-as-code-dev-config-role]
+module.aws_baseline.aws_s3_bucket.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.data.aws_region.current: Read complete after 0s [id=us-east-1]
+module.aws_baseline.data.aws_caller_identity.current: Read complete after 0s [id=xxxxxxxx]
+module.aws_baseline.aws_iam_role_policy_attachment.config: Refreshing state... [id=governance-as-code-dev-config-role-20260313165140304400000001]
+module.aws_baseline.aws_config_configuration_recorder.main: Refreshing state... [id=governance-as-code-dev-recorder]
+module.aws_baseline.aws_s3_bucket_public_access_block.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_policy.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_versioning.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.config: Refreshing state... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_config_delivery_channel.main: Refreshing state... [id=governance-as-code-dev-delivery-channel]
+module.aws_baseline.aws_s3_bucket_public_access_block.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_policy.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_versioning.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.trail: Refreshing state... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_cloudtrail.main: Refreshing state... [id=arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail]
+module.aws_baseline.aws_config_configuration_recorder_status.main: Refreshing state... [id=governance-as-code-dev-recorder]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Refreshing state... [id=governance-as-code-dev-cloudtrail-enabled]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Refreshing state... [id=governance-as-code-dev-s3-bucket-public-write-prohibited]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Refreshing state... [id=governance-as-code-dev-s3-bucket-public-read-prohibited]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Refreshing state... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  - destroy
+
+Terraform will perform the following actions:
+
+  # module.aws_baseline.aws_cloudtrail.main will be destroyed
+  - resource "aws_cloudtrail" "main" {
+      - arn                           = "arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail" -> null
+      - enable_log_file_validation    = true -> null
+      - enable_logging                = true -> null
+      - home_region                   = "us-east-1" -> null
+      - id                            = "arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail" -> null
+      - include_global_service_events = true -> null
+      - is_multi_region_trail         = true -> null
+      - is_organization_trail         = false -> null
+      - name                          = "governance-as-code-dev-trail" -> null
+      - s3_bucket_name                = "governance-as-code-trail-bucket-1772663013" -> null
+      - tags                          = {} -> null
+      - tags_all                      = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (6 unchanged attributes hidden)
+    }
+
+  # module.aws_baseline.aws_config_config_rule.cloud_trail_enabled will be destroyed
+  - resource "aws_config_config_rule" "cloud_trail_enabled" {
+      - arn                         = "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-fylz41" -> null
+      - id                          = "governance-as-code-dev-cloudtrail-enabled" -> null
+      - name                        = "governance-as-code-dev-cloudtrail-enabled" -> null
+      - rule_id                     = "config-rule-fylz41" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - evaluation_mode {
+          - mode = "DETECTIVE" -> null
+        }
+
+      - source {
+          - owner             = "AWS" -> null
+          - source_identifier = "CLOUD_TRAIL_ENABLED" -> null
+        }
+    }
+
+  # module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited will be destroyed
+  - resource "aws_config_config_rule" "s3_bucket_public_read_prohibited" {
+      - arn                         = "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-co1knu" -> null
+      - id                          = "governance-as-code-dev-s3-bucket-public-read-prohibited" -> null
+      - name                        = "governance-as-code-dev-s3-bucket-public-read-prohibited" -> null
+      - rule_id                     = "config-rule-co1knu" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - evaluation_mode {
+          - mode = "DETECTIVE" -> null
+        }
+
+      - source {
+          - owner             = "AWS" -> null
+          - source_identifier = "S3_BUCKET_PUBLIC_READ_PROHIBITED" -> null
+        }
+    }
+
+  # module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited will be destroyed
+  - resource "aws_config_config_rule" "s3_bucket_public_write_prohibited" {
+      - arn                         = "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-v6ojne" -> null
+      - id                          = "governance-as-code-dev-s3-bucket-public-write-prohibited" -> null
+      - name                        = "governance-as-code-dev-s3-bucket-public-write-prohibited" -> null
+      - rule_id                     = "config-rule-v6ojne" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - evaluation_mode {
+          - mode = "DETECTIVE" -> null
+        }
+
+      - source {
+          - owner             = "AWS" -> null
+          - source_identifier = "S3_BUCKET_PUBLIC_WRITE_PROHIBITED" -> null
+        }
+    }
+
+  # module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled will be destroyed
+  - resource "aws_config_config_rule" "s3_bucket_server_side_encryption_enabled" {
+      - arn                         = "arn:aws:config:us-east-1:xxxxxxxx:config-rule/config-rule-yls82d" -> null
+      - id                          = "governance-as-code-dev-s3-bucket-server-side-encryption-enabled" -> null
+      - name                        = "governance-as-code-dev-s3-bucket-server-side-encryption-enabled" -> null
+      - rule_id                     = "config-rule-yls82d" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (3 unchanged attributes hidden)
+
+      - evaluation_mode {
+          - mode = "DETECTIVE" -> null
+        }
+
+      - source {
+          - owner             = "AWS" -> null
+          - source_identifier = "S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED" -> null
+        }
+    }
+
+  # module.aws_baseline.aws_config_configuration_recorder.main will be destroyed
+  - resource "aws_config_configuration_recorder" "main" {
+      - id       = "governance-as-code-dev-recorder" -> null
+      - name     = "governance-as-code-dev-recorder" -> null
+      - role_arn = "arn:aws:iam::xxxxxxxx:role/governance-as-code-dev-config-role" -> null
+
+      - recording_group {
+          - all_supported                 = true -> null
+          - include_global_resource_types = true -> null
+          - resource_types                = [] -> null
+
+          - exclusion_by_resource_types {
+              - resource_types = [] -> null
+            }
+
+          - recording_strategy {
+              - use_only = "ALL_SUPPORTED_RESOURCE_TYPES" -> null
+            }
+        }
+
+      - recording_mode {
+          - recording_frequency = "CONTINUOUS" -> null
+        }
+    }
+
+  # module.aws_baseline.aws_config_configuration_recorder_status.main will be destroyed
+  - resource "aws_config_configuration_recorder_status" "main" {
+      - id         = "governance-as-code-dev-recorder" -> null
+      - is_enabled = true -> null
+      - name       = "governance-as-code-dev-recorder" -> null
+    }
+
+  # module.aws_baseline.aws_config_delivery_channel.main will be destroyed
+  - resource "aws_config_delivery_channel" "main" {
+      - id             = "governance-as-code-dev-delivery-channel" -> null
+      - name           = "governance-as-code-dev-delivery-channel" -> null
+      - s3_bucket_name = "governance-as-code-config-bucket-1772663013" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # module.aws_baseline.aws_iam_role.config will be destroyed
+  - resource "aws_iam_role" "config" {
+      - arn                   = "arn:aws:iam::xxxxxxxx:role/governance-as-code-dev-config-role" -> null
+      - assume_role_policy    = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "sts:AssumeRole"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "config.amazonaws.com"
+                        }
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - create_date           = "2026-03-13T16:51:40Z" -> null
+      - force_detach_policies = false -> null
+      - id                    = "governance-as-code-dev-config-role" -> null
+      - managed_policy_arns   = [
+          - "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole",
+        ] -> null
+      - max_session_duration  = 3600 -> null
+      - name                  = "governance-as-code-dev-config-role" -> null
+      - path                  = "/" -> null
+      - tags                  = {} -> null
+      - tags_all              = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+      - unique_id             = "AROAXTORPBZUINCUBPQ7P" -> null
+        # (3 unchanged attributes hidden)
+    }
+
+  # module.aws_baseline.aws_iam_role_policy_attachment.config will be destroyed
+  - resource "aws_iam_role_policy_attachment" "config" {
+      - id         = "governance-as-code-dev-config-role-20260313165140304400000001" -> null
+      - policy_arn = "arn:aws:iam::aws:policy/service-role/AWS_ConfigRole" -> null
+      - role       = "governance-as-code-dev-config-role" -> null
+    }
+
+  # module.aws_baseline.aws_s3_bucket.config will be destroyed
+  - resource "aws_s3_bucket" "config" {
+      - arn                         = "arn:aws:s3:::governance-as-code-config-bucket-1772663013" -> null
+      - bucket                      = "governance-as-code-config-bucket-1772663013" -> null
+      - bucket_domain_name          = "governance-as-code-config-bucket-1772663013.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "governance-as-code-config-bucket-1772663013.s3.us-east-1.amazonaws.com" -> null
+      - force_destroy               = false -> null
+      - hosted_zone_id              = "Z3AQBSTGAAJSTF" -> null
+      - id                          = "governance-as-code-config-bucket-1772663013" -> null
+      - object_lock_enabled         = false -> null
+      - policy                      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:GetBucketAcl"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "config.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-config-bucket-1772663013"
+                      - Sid       = "AWSConfigBucketPermissionsCheck"
+                    },
+                  - {
+                      - Action    = "s3:PutObject"
+                      - Condition = {
+                          - StringEquals = {
+                              - "s3:x-amz-acl" = "bucket-owner-full-control"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "config.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-config-bucket-1772663013/AWSLogs/xxxxxxxx/Config/*"
+                      - Sid       = "AWSConfigBucketDelivery"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - region                      = "us-east-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - grant {
+          - id          = "8a0905a21a75cb472fe067e69607fde4621ef28c8185b94f7be6717987018190" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # module.aws_baseline.aws_s3_bucket.trail will be destroyed
+  - resource "aws_s3_bucket" "trail" {
+      - arn                         = "arn:aws:s3:::governance-as-code-trail-bucket-1772663013" -> null
+      - bucket                      = "governance-as-code-trail-bucket-1772663013" -> null
+      - bucket_domain_name          = "governance-as-code-trail-bucket-1772663013.s3.amazonaws.com" -> null
+      - bucket_regional_domain_name = "governance-as-code-trail-bucket-1772663013.s3.us-east-1.amazonaws.com" -> null
+      - force_destroy               = false -> null
+      - hosted_zone_id              = "Z3AQBSTGAAJSTF" -> null
+      - id                          = "governance-as-code-trail-bucket-1772663013" -> null
+      - object_lock_enabled         = false -> null
+      - policy                      = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:GetBucketAcl"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "cloudtrail.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-trail-bucket-1772663013"
+                      - Sid       = "AWSCloudTrailAclCheck"
+                    },
+                  - {
+                      - Action    = "s3:PutObject"
+                      - Condition = {
+                          - StringEquals = {
+                              - "s3:x-amz-acl" = "bucket-owner-full-control"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "cloudtrail.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxx/*"
+                      - Sid       = "AWSCloudTrailWrite"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+      - region                      = "us-east-1" -> null
+      - request_payer               = "BucketOwner" -> null
+      - tags                        = {} -> null
+      - tags_all                    = {
+          - "Environment" = "dev"
+          - "ManagedBy"   = "Terraform"
+          - "Owner"       = "xxxxx-xxxxxxxxx"
+          - "Project"     = "governance-as-code"
+          - "Purpose"     = "GovernanceAsCode"
+        } -> null
+        # (2 unchanged attributes hidden)
+
+      - grant {
+          - id          = "8a0905a21a75cb472fe067e69607fde4621ef28c8185b94f7be6717987018190" -> null
+          - permissions = [
+              - "FULL_CONTROL",
+            ] -> null
+          - type        = "CanonicalUser" -> null
+            # (1 unchanged attribute hidden)
+        }
+
+      - server_side_encryption_configuration {
+          - rule {
+              - bucket_key_enabled = false -> null
+
+              - apply_server_side_encryption_by_default {
+                  - sse_algorithm     = "AES256" -> null
+                    # (1 unchanged attribute hidden)
+                }
+            }
+        }
+
+      - versioning {
+          - enabled    = true -> null
+          - mfa_delete = false -> null
+        }
+    }
+
+  # module.aws_baseline.aws_s3_bucket_policy.config will be destroyed
+  - resource "aws_s3_bucket_policy" "config" {
+      - bucket = "governance-as-code-config-bucket-1772663013" -> null
+      - id     = "governance-as-code-config-bucket-1772663013" -> null
+      - policy = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:GetBucketAcl"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "config.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-config-bucket-1772663013"
+                      - Sid       = "AWSConfigBucketPermissionsCheck"
+                    },
+                  - {
+                      - Action    = "s3:PutObject"
+                      - Condition = {
+                          - StringEquals = {
+                              - "s3:x-amz-acl" = "bucket-owner-full-control"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "config.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-config-bucket-1772663013/AWSLogs/xxxxxxxx/Config/*"
+                      - Sid       = "AWSConfigBucketDelivery"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+    }
+
+  # module.aws_baseline.aws_s3_bucket_policy.trail will be destroyed
+  - resource "aws_s3_bucket_policy" "trail" {
+      - bucket = "governance-as-code-trail-bucket-1772663013" -> null
+      - id     = "governance-as-code-trail-bucket-1772663013" -> null
+      - policy = jsonencode(
+            {
+              - Statement = [
+                  - {
+                      - Action    = "s3:GetBucketAcl"
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "cloudtrail.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-trail-bucket-1772663013"
+                      - Sid       = "AWSCloudTrailAclCheck"
+                    },
+                  - {
+                      - Action    = "s3:PutObject"
+                      - Condition = {
+                          - StringEquals = {
+                              - "s3:x-amz-acl" = "bucket-owner-full-control"
+                            }
+                        }
+                      - Effect    = "Allow"
+                      - Principal = {
+                          - Service = "cloudtrail.amazonaws.com"
+                        }
+                      - Resource  = "arn:aws:s3:::governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxx/*"
+                      - Sid       = "AWSCloudTrailWrite"
+                    },
+                ]
+              - Version   = "2012-10-17"
+            }
+        ) -> null
+    }
+
+  # module.aws_baseline.aws_s3_bucket_public_access_block.config will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "config" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "governance-as-code-config-bucket-1772663013" -> null
+      - id                      = "governance-as-code-config-bucket-1772663013" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # module.aws_baseline.aws_s3_bucket_public_access_block.trail will be destroyed
+  - resource "aws_s3_bucket_public_access_block" "trail" {
+      - block_public_acls       = true -> null
+      - block_public_policy     = true -> null
+      - bucket                  = "governance-as-code-trail-bucket-1772663013" -> null
+      - id                      = "governance-as-code-trail-bucket-1772663013" -> null
+      - ignore_public_acls      = true -> null
+      - restrict_public_buckets = true -> null
+    }
+
+  # module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.config will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "config" {
+      - bucket                = "governance-as-code-config-bucket-1772663013" -> null
+      - id                    = "governance-as-code-config-bucket-1772663013" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - bucket_key_enabled = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.trail will be destroyed
+  - resource "aws_s3_bucket_server_side_encryption_configuration" "trail" {
+      - bucket                = "governance-as-code-trail-bucket-1772663013" -> null
+      - id                    = "governance-as-code-trail-bucket-1772663013" -> null
+        # (1 unchanged attribute hidden)
+
+      - rule {
+          - bucket_key_enabled = false -> null
+
+          - apply_server_side_encryption_by_default {
+              - sse_algorithm     = "AES256" -> null
+                # (1 unchanged attribute hidden)
+            }
+        }
+    }
+
+  # module.aws_baseline.aws_s3_bucket_versioning.config will be destroyed
+  - resource "aws_s3_bucket_versioning" "config" {
+      - bucket                = "governance-as-code-config-bucket-1772663013" -> null
+      - id                    = "governance-as-code-config-bucket-1772663013" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - status     = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+  # module.aws_baseline.aws_s3_bucket_versioning.trail will be destroyed
+  - resource "aws_s3_bucket_versioning" "trail" {
+      - bucket                = "governance-as-code-trail-bucket-1772663013" -> null
+      - id                    = "governance-as-code-trail-bucket-1772663013" -> null
+        # (1 unchanged attribute hidden)
+
+      - versioning_configuration {
+          - status     = "Enabled" -> null
+            # (1 unchanged attribute hidden)
+        }
+    }
+
+Plan: 0 to add, 0 to change, 20 to destroy.
+
+Changes to Outputs:
+  - cloudtrail_name      = "governance-as-code-dev-trail" -> null
+  - config_bucket_name   = "governance-as-code-config-bucket-1772663013" -> null
+  - config_recorder_name = "governance-as-code-dev-recorder" -> null
+  - security_hub_enabled = false -> null
+  - trail_bucket_name    = "governance-as-code-trail-bucket-1772663013" -> null
+
+Do you really want to destroy all resources?
+  Terraform will destroy all your managed infrastructure, as shown above.
+  There is no undo. Only 'yes' will be accepted to confirm.
+
+  Enter a value: yes
+
+module.aws_baseline.aws_s3_bucket_versioning.trail: Destroying... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled]
+module.aws_baseline.aws_s3_bucket_public_access_block.trail: Destroying... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.config: Destroying... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_policy.config: Destroying... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_iam_role_policy_attachment.config: Destroying... [id=governance-as-code-dev-config-role-20260313165140304400000001]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited]
+module.aws_baseline.aws_cloudtrail.main: Destroying... [id=arn:aws:cloudtrail:us-east-1:xxxxxxxx:trail/governance-as-code-dev-trail]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.trail: Destroying... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Destroying... [id=governance-as-code-dev-cloudtrail-enabled]
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.trail: Destruction complete after 0s
+module.aws_baseline.aws_s3_bucket_server_side_encryption_configuration.config: Destruction complete after 0s
+module.aws_baseline.aws_iam_role_policy_attachment.config: Destruction complete after 0s
+module.aws_baseline.aws_s3_bucket_public_access_block.config: Destroying... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_versioning.config: Destroying... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited]
+module.aws_baseline.aws_cloudtrail.main: Destruction complete after 0s
+module.aws_baseline.aws_s3_bucket_policy.trail: Destroying... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_s3_bucket_public_access_block.config: Destruction complete after 0s
+module.aws_baseline.aws_s3_bucket_public_access_block.trail: Destruction complete after 0s
+module.aws_baseline.aws_s3_bucket_versioning.config: Destruction complete after 1s
+module.aws_baseline.aws_s3_bucket_versioning.trail: Destruction complete after 1s
+module.aws_baseline.aws_s3_bucket_policy.config: Destruction complete after 1s
+module.aws_baseline.aws_s3_bucket_policy.trail: Destruction complete after 1s
+module.aws_baseline.aws_s3_bucket.trail: Destroying... [id=governance-as-code-trail-bucket-1772663013]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Still destroying... [id=governance-as-code-dev-cloudtrail-enabled, 00m13s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Still destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled, 00m13s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited, 00m13s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited, 00m13s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Still destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled, 00m23s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited, 00m23s elapsed]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Still destroying... [id=governance-as-code-dev-cloudtrail-enabled, 00m23s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited, 00m23s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited, 00m33s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Still destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled, 00m33s elapsed]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Still destroying... [id=governance-as-code-dev-cloudtrail-enabled, 00m33s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited, 00m33s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Still destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled, 00m43s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited, 00m43s elapsed]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Still destroying... [id=governance-as-code-dev-cloudtrail-enabled, 00m43s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited, 00m43s elapsed]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Still destroying... [id=governance-as-code-dev-cloudtrail-enabled, 00m55s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Still destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled, 00m55s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited, 00m55s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited, 00m55s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-read-prohibited, 01m05s elapsed]
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Still destroying... [id=governance-as-code-dev-cloudtrail-enabled, 01m05s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Still destroying... [id=governance-as-code-dev-s3-bucket-server-side-encryption-enabled, 01m05s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Still destroying... [id=governance-as-code-dev-s3-bucket-public-write-prohibited, 01m05s elapsed]
+module.aws_baseline.aws_config_config_rule.s3_bucket_server_side_encryption_enabled: Destruction complete after 1m9s
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_write_prohibited: Destruction complete after 1m9s
+module.aws_baseline.aws_config_config_rule.cloud_trail_enabled: Destruction complete after 1m9s
+module.aws_baseline.aws_config_config_rule.s3_bucket_public_read_prohibited: Destruction complete after 1m9s
+module.aws_baseline.aws_config_configuration_recorder_status.main: Destroying... [id=governance-as-code-dev-recorder]
+module.aws_baseline.aws_config_configuration_recorder_status.main: Destruction complete after 1s
+module.aws_baseline.aws_config_delivery_channel.main: Destroying... [id=governance-as-code-dev-delivery-channel]
+module.aws_baseline.aws_config_delivery_channel.main: Destruction complete after 0s
+module.aws_baseline.aws_config_configuration_recorder.main: Destroying... [id=governance-as-code-dev-recorder]
+module.aws_baseline.aws_s3_bucket.config: Destroying... [id=governance-as-code-config-bucket-1772663013]
+module.aws_baseline.aws_config_configuration_recorder.main: Destruction complete after 1s
+module.aws_baseline.aws_iam_role.config: Destroying... [id=governance-as-code-dev-config-role]
+module.aws_baseline.aws_iam_role.config: Destruction complete after 1s
+╷
+│ Error: deleting S3 Bucket (governance-as-code-trail-bucket-1772663013): operation error S3: DeleteBucket, https response error StatusCode: 409, RequestID: D6E2G8MA2VXS9KHW, HostID: BSRoYb7YKpkSe+MiwYkChppJrbQHQlBtXKElSJ750xxxxxxxlmFRj+IXrr5KaWEyZ+J36XDDPO9rh+7JL4qX50BAVr6K8q, api error BucketNotEmpty: The bucket you tried to delete is not empty. You must delete all versions in the bucket.
+│ 
+│ 
+╵
+╷
+│ Error: deleting S3 Bucket (governance-as-code-config-bucket-1772663013): operation error S3: DeleteBucket, https response error StatusCode: 409, RequestID: 1A9GHTFVE120Y9QH, HostID: fkrXgf17sqOJyUYT6dr+Gxxxxxxxxxxxxxl0Ik1RO1vDGAlU4FjmAts4Nz/MraexxxxxxxxEYrslg=, api error BucketNotEmpty: The bucket you tried to delete is not empty. You must delete all versions in the bucket.
+│ 
+│ 
+╵
+> 
+> 
+>
+ because of above error, delete s3's recursively  
+>
+>
+> aws s3 rm s3://governance-as-code-config-bucket-1772663013 --recursive
+delete: s3://governance-as-code-config-bucket-1772663013/AWSLogs/xxxxxxxxx/Config/ConfigWritabilityCheckFile
+>
+>
+> aws s3 rm s3://governance-as-code-trail-bucket-1772663013 --recursive
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/eu-west-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_eu-west-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ap-northeast-3/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ap-northeast-3_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/eu-north-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_eu-north-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ap-northeast-2/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ap-northeast-2_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ap-southeast-2/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ap-southeast-2_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ap-south-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ap-south-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ca-central-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ca-central-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/eu-west-2/2026/03/13/xxxxxxxxx_CloudTrail-Digest_eu-west-2_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/eu-central-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_eu-central-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ap-northeast-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ap-northeast-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/ap-southeast-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_ap-southeast-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/eu-west-3/2026/03/13/xxxxxxxxx_CloudTrail-Digest_eu-west-3_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/sa-east-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_sa-east-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1700Z_6eYjpj43gVui0Lsb.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1705Z_dHR2EHxViScUIux7.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1700Z_VQLyV3TCLFcmiuF2.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1705Z_lBxSi6lHwrQURA4C.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1710Z_iSJmD288E3k1DUGd.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1710Z_jahPJbqCR8oLmtQx.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1705Z_64TlNpi47dA6oUN5.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1710Z_zCfr4SWZsN205j3H.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1705Z_XcddLjp6Kjx4EH4S.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1710Z_xJmqwvCj2l8IQXfp.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1715Z_7v8G0raBg4w8Z2Og.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1715Z_JtMSUntAHz8Flgf0.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1715Z_RGO68t8ZETEzUuTb.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1715Z_X1bG5J0ZFFxyrVwV.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1725Z_0KPtRiFIrZ9kOyj0.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1730Z_QcBpU6Ogs1tAelp7.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1715Z_gw9W45uzhAImjdtb.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1725Z_34MsSUbCFY3tIGC4.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1725Z_xrug4ZLkByvNH4Mr.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1730Z_mn7VYZ1JjeIEfmWf.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1720Z_XmtorEcmwgC7qRef.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1720Z_0R1JIcRdgZPYr138.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1730Z_f7xmk6RQzMq8BI53.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1730Z_vXuq6MmuAiikln1C.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1735Z_L90Z9ijGcSum4OYy.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1735Z_dgigRnPByOJ8mGuH.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1735Z_PFRMRQVjrcM65JKB.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-west-2/2026/03/13/xxxxxxxxx_CloudTrail_us-west-2_20260313T1705Z_HW2NOA1Y4315fo3A.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-west-2/2026/03/13/xxxxxxxxx_CloudTrail_us-west-2_20260313T1705Z_duT15I9cEi7yVC4b.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_us-east-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/us-east-2/2026/03/13/xxxxxxxxx_CloudTrail-Digest_us-east-2_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/us-west-1/2026/03/13/xxxxxxxxx_CloudTrail-Digest_us-west-1_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail-Digest/us-west-2/2026/03/13/xxxxxxxxx_CloudTrail-Digest_us-west-2_governance-as-code-dev-trail_us-east-1_20260313T165142Z.json.gz
+delete: s3://governance-as-code-trail-bucket-1772663013/AWSLogs/xxxxxxxxx/CloudTrail/us-east-1/2026/03/13/xxxxxxxxx_CloudTrail_us-east-1_20260313T1735Z_o5Su4aQ4xWiPoF64.json.gz
+>
+>    
